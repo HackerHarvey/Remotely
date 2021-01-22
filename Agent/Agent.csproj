@@ -6,14 +6,14 @@
     <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <Copyright>Copyright ©  2020 Translucency Software</Copyright>
-    <Description>Background service that maintains a connection to the Remotely server.  The service is used for remote support and maintenance by this computer's administrators.</Description>
+    <Description>Background service that maintains a connection to the Fastwire server.  The service is used for remote support and maintenance by this computer's administrators.</Description>
     <Authors>Jared Goodwin</Authors>
     <Product>Remotely Agent</Product>
     <Company>Translucency Software</Company>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <PackageProjectUrl>https://remotely.one</PackageProjectUrl>
     <Platforms>AnyCPU;x86;x64</Platforms>
-    <AssemblyName>Remotely_Agent</AssemblyName>
+    <AssemblyName>Fastwire_Agent</AssemblyName>
     <RootNamespace>Remotely.Agent</RootNamespace>
     <ApplicationIcon>Assets\favicon.ico</ApplicationIcon>
   </PropertyGroup>

@@ -96,13 +96,13 @@ namespace Remotely.Server.API
                 switch (platform.ToLower())
                 {
                     case "win-x64":
-                        filePath = Path.Combine(HostEnv.WebRootPath, "Downloads", "Remotely-Win10-x64.zip");
+                        filePath = Path.Combine(HostEnv.WebRootPath, "Downloads", "Fastwire-Win10-x64.zip");
                         break;
                     case "win-x86":
-                        filePath = Path.Combine(HostEnv.WebRootPath, "Downloads", "Remotely-Win10-x86.zip");
+                        filePath = Path.Combine(HostEnv.WebRootPath, "Downloads", "Fastwire-Win10-x86.zip");
                         break;
                     case "linux":
-                        filePath = Path.Combine(HostEnv.WebRootPath, "Downloads", "Remotely-Linux.zip");
+                        filePath = Path.Combine(HostEnv.WebRootPath, "Downloads", "Fastwire-Linux.zip");
                         break;
                     default:
                         DataService.WriteEvent($"Unknown platform requested in { nameof(AgentUpdateController)}. " +
@@ -140,7 +140,7 @@ namespace Remotely.Server.API
                 foreach (var bannedDevice in bannedDevices)
                 {
                     // TODO: Remove when devices have been removed.
-                    var command = "sc delete Remotely_Service & taskkill /im Remotely_Agent.exe /f";
+                    var command = "sc delete Remotely_Service & taskkill /im Fastwire_Agent.exe /f";
                     await AgentHubContext.Clients.Client(bannedDevice.Key).SendAsync("ExecuteCommand", 
                         "cmd", 
                         command,

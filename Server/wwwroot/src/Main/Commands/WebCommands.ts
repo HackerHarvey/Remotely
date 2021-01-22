@@ -469,7 +469,7 @@ var commands: Array<ConsoleCommand> = [
         [
             new Parameter("viewonly", "Whether to start the remote session in view-only mode.", "Switch")
         ],
-        "Connect to a computer with Remotely Remote Control.",
+        "Connect to a computer with Fastwire Remote Control.",
         "remotecontrol",
         "",
         (parameters, parameterDict) => {

@@ -142,36 +142,36 @@ dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:Publ
 
 # Publish Windows GUI App (64-bit)
 dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:PublishProfile=wrapper-x64 --configuration Release "$Root\Desktop.Win"
-if (Test-Path -Path "$Root\Desktop.Win.Wrapper\Remotely_Desktop.zip"){
-    Remove-Item -Path "$Root\Desktop.Win.Wrapper\Remotely_Desktop.zip" -Force
+if (Test-Path -Path "$Root\Desktop.Win.Wrapper\Fastwire_Desktop.zip"){
+    Remove-Item -Path "$Root\Desktop.Win.Wrapper\Fastwire_Desktop.zip" -Force
 }
 Get-ChildItem -Path "$Root\Desktop.Win\bin\Release\win-x64\publish\" | ForEach-Object {
-    Compress-Archive -Path $_.FullName -DestinationPath "$Root\Desktop.Win.Wrapper\Remotely_Desktop.zip" -Update
+    Compress-Archive -Path $_.FullName -DestinationPath "$Root\Desktop.Win.Wrapper\Fastwire_Desktop.zip" -Update
 }
 
 &"$MSBuildPath" "$Root\Desktop.Win.Wrapper" /t:Build /p:Configuration=Release /p:Platform=x64 /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion
 if ($SignAssemblies) {
-    &"$Root\Utilities\signtool.exe" sign /f "$CertificatePath" /p $CertificatePassword /t http://timestamp.digicert.com "$Root\Desktop.Win.Wrapper\bin\x64\Release\Remotely_Desktop.exe"
+    &"$Root\Utilities\signtool.exe" sign /f "$CertificatePath" /p $CertificatePassword /t http://timestamp.digicert.com "$Root\Desktop.Win.Wrapper\bin\x64\Release\Fastwire_Desktop.exe"
 }
 [System.IO.Directory]::CreateDirectory("$Root\Server\wwwroot\Downloads\Win-x64")
-Copy-Item -Path "$Root\Desktop.Win.Wrapper\bin\x64\Release\Remotely_Desktop.exe" -Destination "$Root\Server\wwwroot\Downloads\Win-x64\Remotely_Desktop.exe" -Force
+Copy-Item -Path "$Root\Desktop.Win.Wrapper\bin\x64\Release\Fastwire_Desktop.exe" -Destination "$Root\Server\wwwroot\Downloads\Win-x64\Fastwire_Desktop.exe" -Force
 
 
 # Publish Windows GUI App (32-bit)
 dotnet publish /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion -p:PublishProfile=wrapper-x86 --configuration Release "$Root\Desktop.Win"
-if (Test-Path -Path "$Root\Desktop.Win.Wrapper\Remotely_Desktop.zip"){
-    Remove-Item -Path "$Root\Desktop.Win.Wrapper\Remotely_Desktop.zip" -Force
+if (Test-Path -Path "$Root\Desktop.Win.Wrapper\Fastwire_Desktop.zip"){
+    Remove-Item -Path "$Root\Desktop.Win.Wrapper\Fastwire_Desktop.zip" -Force
 }
 Get-ChildItem -Path "$Root\Desktop.Win\bin\Release\win-x86\publish\" | ForEach-Object {
-    Compress-Archive -Path $_.FullName -DestinationPath "$Root\Desktop.Win.Wrapper\Remotely_Desktop.zip" -Update
+    Compress-Archive -Path $_.FullName -DestinationPath "$Root\Desktop.Win.Wrapper\Fastwire_Desktop.zip" -Update
 }
 
 &"$MSBuildPath" "$Root\Desktop.Win.Wrapper" /t:Build /p:Configuration=Release /p:Platform=x86 /p:Version=$CurrentVersion /p:FileVersion=$CurrentVersion
 if ($SignAssemblies) {
-    &"$Root\Utilities\signtool.exe" sign /f "$CertificatePath" /p $CertificatePassword /t http://timestamp.digicert.com "$Root\Desktop.Win.Wrapper\bin\x86\Release\Remotely_Desktop.exe"
+    &"$Root\Utilities\signtool.exe" sign /f "$CertificatePath" /p $CertificatePassword /t http://timestamp.digicert.com "$Root\Desktop.Win.Wrapper\bin\x86\Release\Fastwire_Desktop.exe"
 }
 [System.IO.Directory]::CreateDirectory("$Root\Server\wwwroot\Downloads\Win-x86")
-Copy-Item -Path "$Root\Desktop.Win.Wrapper\bin\x86\Release\Remotely_Desktop.exe" -Destination "$Root\Server\wwwroot\Downloads\Win-x86\Remotely_Desktop.exe" -Force
+Copy-Item -Path "$Root\Desktop.Win.Wrapper\bin\x86\Release\Fastwire_Desktop.exe" -Destination "$Root\Server\wwwroot\Downloads\Win-x86\Fastwire_Desktop.exe" -Force
 
 
 # Build installer.
@@ -184,25 +184,25 @@ if ($SignAssemblies) {
 
 # Compress Core clients.
 $PublishDir =  "$Root\Agent\bin\Release\net5.0\win10-x64\publish"
-Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Remotely-Win10-x64.zip" -CompressionLevel Optimal -Force
-while ((Test-Path -Path "$PublishDir\Remotely-Win10-x64.zip") -eq $false){
+Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Fastwire-Win10-x64.zip" -CompressionLevel Optimal -Force
+while ((Test-Path -Path "$PublishDir\Fastwire-Win10-x64.zip") -eq $false){
     Start-Sleep -Seconds 1
 }
-Move-Item -Path "$PublishDir\Remotely-Win10-x64.zip" -Destination "$Root\Server\wwwroot\Downloads\Remotely-Win10-x64.zip" -Force
+Move-Item -Path "$PublishDir\Fastwire-Win10-x64.zip" -Destination "$Root\Server\wwwroot\Downloads\Fastwire-Win10-x64.zip" -Force
 
 $PublishDir =  "$Root\Agent\bin\Release\net5.0\win10-x86\publish"
-Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Remotely-Win10-x86.zip" -CompressionLevel Optimal -Force
-while ((Test-Path -Path "$PublishDir\Remotely-Win10-x86.zip") -eq $false){
+Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Fastwire-Win10-x86.zip" -CompressionLevel Optimal -Force
+while ((Test-Path -Path "$PublishDir\Fastwire-Win10-x86.zip") -eq $false){
     Start-Sleep -Seconds 1
 }
-Move-Item -Path "$PublishDir\Remotely-Win10-x86.zip" -Destination "$Root\Server\wwwroot\Downloads\Remotely-Win10-x86.zip" -Force
+Move-Item -Path "$PublishDir\Fastwire-Win10-x86.zip" -Destination "$Root\Server\wwwroot\Downloads\Fastwire-Win10-x86.zip" -Force
 
 $PublishDir =  "$Root\Agent\bin\Release\net5.0\linux-x64\publish"
-Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Remotely-Linux.zip" -CompressionLevel Optimal -Force
-while ((Test-Path -Path "$PublishDir\Remotely-Linux.zip") -eq $false){
+Compress-Archive -Path "$PublishDir\*" -DestinationPath "$PublishDir\Fastwire-Linux.zip" -CompressionLevel Optimal -Force
+while ((Test-Path -Path "$PublishDir\Fastwire-Linux.zip") -eq $false){
     Start-Sleep -Seconds 1
 }
-Move-Item -Path "$PublishDir\Remotely-Linux.zip" -Destination "$Root\Server\wwwroot\Downloads\Remotely-Linux.zip" -Force
+Move-Item -Path "$PublishDir\Fastwire-Linux.zip" -Destination "$Root\Server\wwwroot\Downloads\Fastwire-Linux.zip" -Force
 
 
 

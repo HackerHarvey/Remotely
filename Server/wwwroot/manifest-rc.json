@@ -1,7 +1,7 @@
 {
-  "id": "Remotely Remote Control",
-  "name": "Remotely Remote Control",
-  "short_name": "Remotely Remote Control",
+  "id": "Fastwire Remote Control",
+  "name": "Fastwire Remote Control",
+  "short_name": "Fastwire Remote Control",
   "start_url": "https://app.remotely.one/remotecontrol",
   "display": "standalone",
   "background_color": "black",

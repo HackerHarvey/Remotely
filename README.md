@@ -1,8 +1,8 @@
-# Remotely
+# Remotely (Fastwire Edition)
 A remote control and remote scripting solution, built with .NET Core, SignalR Core, and WebRTC.
 
 [![Build Status](https://dev.azure.com/translucency/Remotely/_apis/build/status/Remotely-ReleaseBuild?branchName=master)](https://dev.azure.com/translucency/Remotely/_build/latest?definitionId=17&branchName=master)
-![GitHub Build](https://github.com/lucent-sea/Remotely/workflows/GitHub%20Build/badge.svg)
+![GitHub Build](https://github.com/HackerHarvey/Remotely/workflows/GitHub%20Build/badge.svg)
 
 ## Donations
 If this project has benefited you in some way, or if you just want to show appreciation, please consider donating to a charity.
@@ -15,8 +15,8 @@ Ongoing via GitHub: https://github.com/sponsors/lucent-sea
 One-Time via PayPal: https://paypal.me/translucency  
 
 ## Project Links
-Demo App: https://app.remotely.one  
-Website: https://remotely.one  
+Demo App: https://support.fastwire.co.uk  
+Website: https://fastwire.co.uk  
 Subreddit: https://www.reddit.com/r/remotely_app/  
 
 ## Disclaimer
@@ -43,8 +43,8 @@ The following steps will configure your Windows 10 machine for building the Remo
 	* Link: https://nodejs.org/
 * Install Git for Windows.
     * Link: https://git-scm.com/downloads
-* Clone the git repository: `git clone https://github.com/lucent-sea/remotely`
-* Run Publish.ps1 in the [Utilities folder in source control](https://raw.githubusercontent.com/lucent-sea/Remotely/master/Utilities/Publish.ps1).
+* Clone the git repository: `git clone https://github.com/HackerHarvey/remotely`
+* Run Publish.ps1 in the [Utilities folder in source control](https://raw.githubusercontent.com/HackerHarvey/Remotely/master/Utilities/Publish.ps1).
     * Example: `powershell -f [path]\Publish.ps1 -outdir C:\inetpub\remotely -rid win10-x64 -hostname https://mysite.mydomain.com`
     	* Use `-rid linux-x64` if you're going to host on Ubuntu.
     * The output folder will now contain the server, with the clients in the Downloads folder.
@@ -56,7 +56,7 @@ The following steps will configure your Windows 10 machine for building the Remo
 ## Hosting a Server (Windows)
 * Build the Remotely server and clients using the above steps.
 * Create a site in IIS that will run Remotely.
-* Run Install-RemotelyServer.ps1 (as an administrator), which is in the [Utilities folder in source control](https://raw.githubusercontent.com/lucent-sea/Remotely/master/Utilities/Install-RemotelyServer.ps1) and on the Releases page.
+* Run Install-RemotelyServer.ps1 (as an administrator), which is in the [Utilities folder in source control](https://raw.githubusercontent.com/HackerHarvey/Remotely/master/Utilities/Install-RemotelyServer.ps1) and on the Releases page.
     * Alternatively, you can build from source and copy the server files to the site folder.
 * Download and install the .NET Core Runtime (not the SDK) with the Hosting Bundle.
 	* Link: https://dotnet.microsoft.com/download/dotnet-core/current/runtime
@@ -74,7 +74,7 @@ The following steps will configure your Windows 10 machine for building the Remo
 
 ## Hosting a Server (Ubuntu)
 * Ubuntu 18.04 and 19.04 have been tested.
-* Run Ubuntu_Server_Install.sh (with sudo), which is in the [Utilities folder in source control](https://raw.githubusercontent.com/lucent-sea/Remotely/master/Utilities/Remotely_Server_Install.sh).
+* Run Ubuntu_Server_Install.sh (with sudo), which is in the [Utilities folder in source control](https://raw.githubusercontent.com/HackerHarvey/Remotely/master/Utilities/Remotely_Server_Install.sh).
 	* The script is designed to install Remotely and Nginx on the same server, running Ubuntu 18.04 or 19.04.  You'll need to manually set up other configurations.
     * A helpful user supplied an example Apache configuration, which can be found in the Utilities folder.
     * The script will prompt for the "App root" location, which is the above directory where the server files are located.
@@ -94,7 +94,7 @@ There are countless ways to host an ASP.NET Core app, and I can't document or au
 ## Admin Accounts
 The first account created will be an admin for both the server and the organization that's created for the account.
 
-An organization admin has access to the Organization page and server log entries specific to his/her organization.  A server admin has access to the Server Config page and can see server log entries that don't belong to an organization. 
+An organization admin has access to the Organization page and server log entries specific to his/her organization.  A server admin has access to the Server Config page and can see server log entries that don't belong to an organization.
 
 ## Upgrading
 * To upgrade a server, do any of the below to copy the new Server application files.
@@ -179,7 +179,7 @@ Ideally, you'd be doing remote control from an actual computer or laptop.  Howev
 There's a page at `/GetSupport` where end users can request support.  When the form is submitted, an alert appears on the main page, above the grid.
 
 A shortcut to this page is placed in the `\Program Files\Remotely\` folder.  You can copy it anywhere you like.  You can also have it copied to the desktop automatically by using the `-supportshortcut` switch on the installer.
-	
+
 ## .NET Core Deployments
 * .NET Core has two methods of deployment: framework-dependent and self-contained.
 	* Framework-dependent deployments require the .NET Core runtime to be installed on the target computers.  It must be the same version that was used to build the app.
@@ -278,7 +278,7 @@ Register-ScheduledJob -ScriptBlock {
     $OsDrive = Get-PSDrive -Name C
     $FreeSpace = $OsDrive.Free / ($OsDrive.Used + $OsDrive.Free)
     if ($FreeSpace -lt .1) {
-        Invoke-WebRequest -Uri "https://localhost:5001/api/Alerts/Create/" -Method Post -Headers @{ 
+        Invoke-WebRequest -Uri "https://localhost:5001/api/Alerts/Create/" -Method Post -Headers @{
             Authorization="3e9d8273-1dc1-4303-bd50-7a133e36b9b7:S+82XKZdvg278pSFHWtUklqHENuO5IhH"
         } -Body @"
             {

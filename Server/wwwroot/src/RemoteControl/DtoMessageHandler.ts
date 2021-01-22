@@ -110,7 +110,7 @@ export class DtoMessageHandler {
         ReceiveFile(file);
     }
     HandleMachineName(machineNameDto: MachineNameDto) {
-        document.title = `${machineNameDto.MachineName} - Remotely Session`;
+        document.title = `${machineNameDto.MachineName} - Fastwire Session`;
     }
     HandleScreenData(screenDataDto: ScreenDataDto) {
         UI.UpdateDisplays(screenDataDto.SelectedScreen, screenDataDto.DisplayNames);

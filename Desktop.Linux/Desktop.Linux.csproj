@@ -3,7 +3,7 @@
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
     <ApplicationIcon>Assets\favicon.ico</ApplicationIcon>
-    <AssemblyName>Remotely_Desktop</AssemblyName>
+    <AssemblyName>Fastwire_Desktop</AssemblyName>
     <RootNamespace>Remotely.Desktop.Linux</RootNamespace>
     <Platforms>AnyCPU;x64;x86</Platforms>
   </PropertyGroup>
@@ -36,7 +36,7 @@
     <None Remove="Models\**" />
   </ItemGroup>
   <ItemGroup>
-    <None Remove="Assets\Remotely_Icon.png" />
+    <None Remove="Assets\FM_Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="0.9.12" />

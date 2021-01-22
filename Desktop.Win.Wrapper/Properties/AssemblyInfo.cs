@@ -5,11 +5,11 @@ using System.Windows;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Remotely Desktop")]
-[assembly: AssemblyDescription("Desktop client for allowing remote control via the Remotely server.")]
+[assembly: AssemblyTitle("Fastwire Desktop")]
+[assembly: AssemblyDescription("Desktop client for allowing remote control via the Fastwire server.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Translucency Software")]
-[assembly: AssemblyProduct("Remotely Desktop")]
+[assembly: AssemblyProduct("Fastwire Desktop")]
 [assembly: AssemblyCopyright("Copyright ©  2020 Translucency Software")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

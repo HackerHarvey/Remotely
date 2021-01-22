@@ -7,7 +7,7 @@
     <ProjectGuid>{A9967E61-B1BE-4AA5-A33A-99B0B8B5FC2A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Remotely.Desktop.Win.Wrapper</RootNamespace>
-    <AssemblyName>Remotely_Desktop</AssemblyName>
+    <AssemblyName>Fastwire_Desktop</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -147,7 +147,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EmbeddedResource Include="Remotely_Desktop.zip" />
+    <EmbeddedResource Include="Fastwire_Desktop.zip" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -156,13 +156,13 @@
     <Resource Include="favicon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Remotely_Icon.png" />
+    <Resource Include="FM_Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>if $(ConfigurationName) == Debug (
-   if not exist "$(ProjectDir)Remotely_Desktop.zip" (
-       echo &gt; $(ProjectDir)Remotely_Desktop.zip
+   if not exist "$(ProjectDir)Fastwire_Desktop.zip" (
+       echo &gt; $(ProjectDir)Fastwire_Desktop.zip
    )
 )</PreBuildEvent>
   </PropertyGroup>

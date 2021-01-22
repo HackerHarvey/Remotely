@@ -80,7 +80,7 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
-    <Content Update="wwwroot\images\Remotely_Logo.png">
+    <Content Update="wwwroot\images\Fastwire_Logo.png">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>

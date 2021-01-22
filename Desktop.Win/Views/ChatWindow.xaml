@@ -17,7 +17,7 @@
         MinHeight="250"
         MinWidth="200"
         Topmost="True"
-        Title="Remotely Chat" Height="450" Width="350" Icon="/Assets/favicon.ico"
+        Title="Fastwire Chat" Height="450" Width="350" Icon="/Assets/favicon.ico"
         Loaded="Window_Loaded"
         ContentRendered="Window_ContentRendered">
     
@@ -35,9 +35,9 @@
         <Border Height="50" Background="#FF464646">
             <DockPanel Margin="10,0,0,0">
                 <DockPanel>
-                    <Image Height="50" Width="50" Source="/Assets/Remotely_Icon.png" Margin="0,0,10,0"></Image>
+                    <Image Height="50" Width="50" Source="/Assets/FM_Icon.png" Margin="0,0,10,0"></Image>
                     <TextBlock Foreground="#FF1D90F1" FontWeight="Bold" FontSize="20" VerticalAlignment="Center">
-                            Remotely Chat
+                            Fastwire Chat
                     </TextBlock>
                 </DockPanel>
 

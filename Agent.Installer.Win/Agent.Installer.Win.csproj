@@ -175,7 +175,7 @@
     <Resource Include="Assets\favicon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Remotely_Icon.png" />
+    <Resource Include="Assets\FM_Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="IWshRuntimeLibrary">

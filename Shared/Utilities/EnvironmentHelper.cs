@@ -13,11 +13,11 @@ namespace Remotely.Shared.Utilities
                 string fileExt = "";
                 if (IsWindows)
                 {
-                    fileExt = "Remotely_Agent.exe";
+                    fileExt = "Fastwire_Agent.exe";
                 }
                 else if (IsLinux)
                 {
-                    fileExt = "Remotely_Agent";
+                    fileExt = "Fastwire_Agent";
                 }
                 return fileExt;
             }
@@ -29,11 +29,11 @@ namespace Remotely.Shared.Utilities
             {
                 if (IsWindows)
                 {
-                    return "Remotely_Desktop.exe";
+                    return "Fastwire_Desktop.exe";
                 }
                 else if (IsLinux)
                 {
-                    return "Remotely_Desktop";
+                    return "Fastwire_Desktop";
                 }
                 else
                 {

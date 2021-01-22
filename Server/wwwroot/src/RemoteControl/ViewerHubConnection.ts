@@ -120,7 +120,7 @@ export class ViewerHubConnection {
             this.Connection.stop();
         });
         hubConnection.on("ReceiveMachineName", (machineName: string) => {
-            document.title = `${machineName} - Remotely Session`;
+            document.title = `${machineName} - Fastwire Session`;
         });
         hubConnection.on("RelaunchedScreenCasterReady", (newClientID: string) => {
             ViewerApp.ClientID = newClientID;

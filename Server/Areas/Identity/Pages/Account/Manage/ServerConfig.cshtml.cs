@@ -89,7 +89,7 @@ namespace Remotely.Server.Areas.Identity.Pages.Account.Manage
         {
             var result = await OnPostSaveAsync();
             var user = DataService.GetUserByName(User.Identity.Name);
-            var success = await EmailSender.SendEmailAsync(user.Email, "Remotely Test Email", "Congratulations! Your SMTP settings are working!", user.OrganizationID);
+            var success = await EmailSender.SendEmailAsync(user.Email, "Fastwire Test Email", "Congratulations! Your SMTP settings are working!", user.OrganizationID);
             if (success)
             {
                 StatusMessage = "Test email sent.  Check your inbox (including spam folder).";
