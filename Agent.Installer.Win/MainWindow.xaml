@@ -12,7 +12,7 @@
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Loaded="Window_Loaded"
         WindowStartupLocation="CenterScreen"
-        Title="Remotely Installer" Height="325" Width="500"  Icon="Assets/favicon.ico">
+        Title="Fastwire Installer" Height="325" Width="500"  Icon="Assets/favicon.ico">
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
     </Window.Resources>
@@ -25,11 +25,11 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        
+
         <Border Grid.Row="0" Height="50" Background="#FF464646" VerticalAlignment="Top">
             <DockPanel Margin="10,0,0,0">
-                <Image Height="50" Width="50" Source="Assets/Remotely_Icon.png" Margin="0,0,10,0"></Image>
-                <TextBlock Foreground="#FF1D90F1" FontWeight="Bold" FontSize="20" VerticalAlignment="Center">Remotely Installer</TextBlock>
+                <Image Height="50" Width="50" Source="Assets/FM_Icon.png" Margin="0,0,10,0"></Image>
+                <TextBlock Foreground="#FF1D90F1" FontWeight="Bold" FontSize="20" VerticalAlignment="Center">Fastwire Installer</TextBlock>
                 <Button Style="{StaticResource TitlebarButton}" Click="CloseButton_Click" Content="X" />
                 <Button Style="{StaticResource TitlebarButton}" Click="MinimizeButton_Click" Content="_"/>
             </DockPanel>
@@ -53,30 +53,30 @@
 
                     <TextBlock Grid.Column="0" Grid.Row="0" Margin="0,0,15,0" FontSize="14">
                         <Run>Server URL:</Run>
-                        <Run Text="&#xE897;" 
+                        <Run Text="&#xE897;"
                              FontWeight="Bold"
-                             FontFamily="Segoe MDL2 Assets" 
-                             Cursor="Hand" 
-                             ToolTip="This is the URL of the server that your device will connect to after Remotely is installed."></Run>
+                             FontFamily="Segoe MDL2 Assets"
+                             Cursor="Hand"
+                             ToolTip="This is the URL of the server that your device will connect to after Fastwire is installed."></Run>
                     </TextBlock>
                     <TextBox Grid.Column="1" Grid.Row="0" TextWrapping="Wrap" Text="{Binding ServerUrl}" FontSize="14" />
 
                     <TextBlock Grid.Column="0" Grid.Row="2" Margin="0,0,15,0" FontSize="14">
                         <Run>Organization ID:</Run>
-                        <Run Text="&#xE897;" 
+                        <Run Text="&#xE897;"
                              FontWeight="Bold"
-                             FontFamily="Segoe MDL2 Assets" 
-                             Cursor="Hand" 
+                             FontFamily="Segoe MDL2 Assets"
+                             Cursor="Hand"
                              ToolTip="Enter the organization ID that will have access to this device."></Run>
                     </TextBlock>
                     <TextBox  Grid.Column="1" Grid.Row="2" TextWrapping="Wrap" Text="{Binding OrganizationID}" FontSize="14" />
 
                     <TextBlock Grid.Column="0" Grid.Row="4" Margin="0,0,15,0" FontSize="14">
                         <Run>Support Shortcut:</Run>
-                        <Run Text="&#xE897;" 
+                        <Run Text="&#xE897;"
                              FontWeight="Bold"
-                             FontFamily="Segoe MDL2 Assets" 
-                             Cursor="Hand" 
+                             FontFamily="Segoe MDL2 Assets"
+                             Cursor="Hand"
                              ToolTip="Create a desktop shortcut to the Get Support page for this device."></Run>
                     </TextBlock>
                     <CheckBox  Grid.Column="1" Grid.Row="4" IsChecked="{Binding CreateSupportShortcut}" />
@@ -90,33 +90,33 @@
         </Grid>
 
         <DockPanel Margin="10" Grid.Row="2">
-            <Button DockPanel.Dock="Left" 
-                    HorizontalAlignment="Left" 
-                    Style="{StaticResource NormalButton}" 
+            <Button DockPanel.Dock="Left"
+                    HorizontalAlignment="Left"
+                    Style="{StaticResource NormalButton}"
                     Margin="5,0,0,0"
                     Command="{Binding OpenLogsCommand}">
                 Logs
             </Button>
 
-            <Button DockPanel.Dock="Right" 
-                    HorizontalAlignment="Right" 
-                    Style="{StaticResource NormalButton}" 
+            <Button DockPanel.Dock="Right"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource NormalButton}"
                     Margin="5,0,0,0"
                     Click="CloseButton_Click">
                 Close
             </Button>
-            <Button DockPanel.Dock="Right" 
+            <Button DockPanel.Dock="Right"
                     HorizontalAlignment="Right"
-                    Style="{StaticResource NormalButton}" 
+                    Style="{StaticResource NormalButton}"
                     Margin="5,0,0,0"
                     IsEnabled="{Binding IsReadyState}"
                     Visibility="{Binding IsServiceInstalled, Converter={StaticResource BooleanToVisibilityConverter}}"
                     Command="{Binding UninstallCommand}">
                 Uninstall
             </Button>
-            <Button DockPanel.Dock="Right" 
-                    HorizontalAlignment="Right" 
-                    Style="{StaticResource NormalButton}" 
+            <Button DockPanel.Dock="Right"
+                    HorizontalAlignment="Right"
+                    Style="{StaticResource NormalButton}"
                     Content="{Binding InstallButtonText}"
                     Margin="5,0,0,0"
                     IsEnabled="{Binding IsReadyState}"

@@ -2,7 +2,7 @@
 @inject IApplicationConfig AppConfig
 @inject IDataService DataService
 
-@{ 
+@{
     RemotelyUser user = User.Identity.IsAuthenticated ?
         DataService.GetUserByName(User.Identity.Name) :
         null;
@@ -87,7 +87,7 @@
                         }
                         else
                         {
-                            @Html.Raw("Remotely")
+                            @Html.Raw("Fastwire")
                         }
                     </div>
                     <div class="logo-subtitle">Support Portal</div>
@@ -123,9 +123,9 @@
         <div class="container">
             <hr />
             <div class="footer-wrapper">
-                <p>&copy; @DateTimeOffset.Now.Year - Translucency Software</p>
+                <p>&copy; @DateTimeOffset.Now.Year - Fastwire</p>
                 <p class="text-right">
-                    <a asp-page="/About">About Remotely</a> - <a asp-area="" asp-page="/Privacy">Privacy</a>
+                    <a asp-page="/About">About Fastwire</a> - <a asp-area="" asp-page="/Privacy">Privacy</a>
                 </p>
             </div>
         </div>

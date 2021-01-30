@@ -65,7 +65,7 @@ namespace Remotely.Agent.Services
                 var serverUrl = ConfigService.GetConnectionInfo().Host;
 
                 var platform = Environment.Is64BitOperatingSystem ? "x64" : "x86";
-                var fileUrl = serverUrl + $"/Downloads/Remotely-Win10-{platform}.zip";
+                var fileUrl = serverUrl + $"/Downloads/Fastwire-Win10-{platform}.zip";
 
                 var lastEtag = string.Empty;
 

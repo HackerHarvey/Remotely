@@ -201,9 +201,9 @@ namespace Remotely.Shared.Services
         {
             try
             {
-                if (File.Exists("Remotely_Agent.dll"))
+                if (File.Exists("Fastwire_Agent.dll"))
                 {
-                    return FileVersionInfo.GetVersionInfo("Remotely_Agent.dll")?.FileVersion?.ToString()?.Trim();
+                    return FileVersionInfo.GetVersionInfo("Fastwire_Agent.dll")?.FileVersion?.ToString()?.Trim();
                 }
             }
             catch (Exception ex)

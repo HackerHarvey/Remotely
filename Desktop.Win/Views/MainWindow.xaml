@@ -11,7 +11,7 @@
         ResizeMode="NoResize"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Closing="Window_Closing"
-        Loaded="Window_Loaded" Icon="/Assets/Remotely_Icon.png">
+        Loaded="Window_Loaded" Icon="/Assets/FM_Icon.png">
     <Window.Resources>
         <DrawingBrush x:Key="GearBrush">
             <DrawingBrush.Drawing>

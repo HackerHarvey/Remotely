@@ -50,7 +50,7 @@ namespace Remotely.Server.Areas.Identity.Pages.Account
                     return RedirectToPage("./ForgotPasswordConfirmation");
                 }
 
-                // For more information on how to enable account confirmation and password reset please 
+                // For more information on how to enable account confirmation and password reset please
                 // visit https://go.microsoft.com/fwlink/?LinkID=532713
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user);
                 code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -65,7 +65,7 @@ namespace Remotely.Server.Areas.Identity.Pages.Account
                 var emailResult = await _emailSender.SendEmailAsync(
                     Input.Email,
                     "Reset Password",
-                    $"<img src='{Request.Scheme}://{Request.Host}/images/Remotely_Logo.png'/><br><br>Please reset your Remotely password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                    $"<img src='{Request.Scheme}://{Request.Host}/images/Fastwire_Logo.png'/><br><br>Please reset your Fastwire password by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
                 if (!emailResult)
                 {

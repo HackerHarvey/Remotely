@@ -2,7 +2,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="clr-namespace:Remotely.Desktop.Linux.ViewModels;assembly=Remotely_Desktop"
+        xmlns:vm="clr-namespace:Remotely.Desktop.Linux.ViewModels;assembly=Fastwire_Desktop"
         xmlns:Models="clr-namespace:Remotely.Shared.Models;assembly=Remotely_Shared"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Remotely.Desktop.Linux.Views.ChatWindow"
@@ -13,7 +13,7 @@
         MinHeight="250"
         MinWidth="200"
         Topmost="True"
-        Title="Remotely Chat" Height="450" Width="350">
+        Title="Fastwire Chat" Height="450" Width="350">
   
   <Window.DataContext>
     <vm:ChatWindowViewModel />
@@ -29,9 +29,9 @@
         <DockPanel Margin="10,4,0,0">
           
           <DockPanel>
-            <Image Height="50" Width="50" Source="/Assets/Remotely_Icon.png" Margin="0,0,10,0"></Image>
+            <Image Height="50" Width="50" Source="/Assets/FM_Icon.png" Margin="0,0,10,0"></Image>
             <TextBlock Foreground="#FF1D90F1" FontWeight="Bold" FontSize="20" VerticalAlignment="Center">
-              Remotely Chat
+              Fastwire Chat
             </TextBlock>
           </DockPanel>
           

@@ -53,15 +53,15 @@ cd /usr/local/bin/Remotely/
 
 if [ -z "$AppRoot" ]; then
     echo  "Downloading client..."
-    wget $HostName/Downloads/Remotely-Linux.zip
+    wget $HostName/Downloads/Fastwire-Linux.zip
 else
     echo  "Copying install files..."
-    cp "$AppRoot" /usr/local/bin/Remotely/Remotely-Linux.zip
+    cp "$AppRoot" /usr/local/bin/Remotely/Fastwire-Linux.zip
 fi
 
-unzip ./Remotely-Linux.zip
-chmod +x ./Remotely_Agent
-chmod +x ./Desktop/Remotely_Desktop
+unzip ./Fastwire-Linux.zip
+chmod +x ./Fastwire_Agent
+chmod +x ./Desktop/Fastwire_Desktop
 
 
 connectionInfo="{
@@ -73,7 +73,7 @@ connectionInfo="{
 
 echo "$connectionInfo" > ./ConnectionInfo.json
 
-curl --head $HostName/Downloads/Remotely-Linux.zip | grep -i "etag" | cut -d' ' -f 2 > ./etag.txt
+curl --head $HostName/Downloads/Fastwire-Linux.zip | grep -i "etag" | cut -d' ' -f 2 > ./etag.txt
 
 echo Creating service...
 
@@ -82,7 +82,7 @@ Description=The Remotely agent used for remote access.
 
 [Service]
 WorkingDirectory=/usr/local/bin/Remotely/
-ExecStart=/usr/local/bin/Remotely/Remotely_Agent
+ExecStart=/usr/local/bin/Remotely/Fastwire_Agent
 Restart=always
 StartLimitIntervalSec=0
 RestartSec=10

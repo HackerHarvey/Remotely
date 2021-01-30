@@ -10,7 +10,7 @@
         ResizeMode="NoResize"
         MouseLeftButtonDown="Window_MouseLeftButtonDown"
         WindowStartupLocation="CenterScreen"
-        Loaded="Window_Loaded" Icon="Remotely_Icon.png">
+        Loaded="Window_Loaded" Icon="FM_Icon.png">
     <Grid>
         <StackPanel>
             <Border Height="50" Background="#FF464646">

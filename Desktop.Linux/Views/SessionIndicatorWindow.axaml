@@ -7,7 +7,7 @@
         Height="100"
         x:Class="Remotely.Desktop.Linux.Views.SessionIndicatorWindow"
         Background="#2b2726" 
-        Title="Remotely Desktop"
+        Title="Fastwire Desktop"
         Icon="/Assets/favicon.ico"
         WindowStartupLocation="Manual"
         Topmost="True"

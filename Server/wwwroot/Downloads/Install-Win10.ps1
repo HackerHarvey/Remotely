@@ -64,8 +64,8 @@ function Run-StartupChecks {
 
 function Stop-Remotely {
 	Start-Process -FilePath "cmd.exe" -ArgumentList "/c sc delete Remotely_Service" -Wait -WindowStyle Hidden
-	Stop-Process -Name Remotely_Agent -Force -ErrorAction SilentlyContinue
-	Stop-Process -Name Remotely_Desktop -Force -ErrorAction SilentlyContinue
+	Stop-Process -Name Fastwire_Agent -Force -ErrorAction SilentlyContinue
+	Stop-Process -Name Fastwire_Desktop -Force -ErrorAction SilentlyContinue
 }
 
 function Uninstall-Remotely {
@@ -105,17 +105,17 @@ function Install-Remotely {
 
 	if ($Path) {
 		Write-Log "Copying install files..."
-		Copy-Item -Path $Path -Destination "$env:TEMP\Remotely-Win10-$Platform.zip"
+		Copy-Item -Path $Path -Destination "$env:TEMP\Fastwire-Win10-$Platform.zip"
 
 	}
 	else {
 		$ProgressPreference = 'SilentlyContinue'
 		Write-Log "Downloading client..."
-		Invoke-WebRequest -Uri "$HostName/Downloads/Remotely-Win10-$Platform.zip" -OutFile "$env:TEMP\Remotely-Win10-$Platform.zip" 
+		Invoke-WebRequest -Uri "$HostName/Downloads/Fastwire-Win10-$Platform.zip" -OutFile "$env:TEMP\Fastwire-Win10-$Platform.zip" 
 		$ProgressPreference = 'Continue'
 	}
 
-	if (!(Test-Path -Path "$env:TEMP\Remotely-Win10-$Platform.zip")) {
+	if (!(Test-Path -Path "$env:TEMP\Fastwire-Win10-$Platform.zip")) {
 		Write-Log "Client files failed to download."
 		Do-Exit
 	}
@@ -123,7 +123,7 @@ function Install-Remotely {
 	Stop-Remotely
 	Get-ChildItem -Path "C:\Program Files\Remotely" | Where-Object {$_.Name -notlike "ConnectionInfo.json"} | Remove-Item -Recurse -Force
 
-	Expand-Archive -Path "$env:TEMP\Remotely-Win10-$Platform.zip" -DestinationPath "$InstallPath"  -Force
+	Expand-Archive -Path "$env:TEMP\Fastwire-Win10-$Platform.zip" -DestinationPath "$InstallPath"  -Force
 
 	New-Item -ItemType File -Path "$InstallPath\ConnectionInfo.json" -Value (ConvertTo-Json -InputObject $ConnectionInfo) -Force
 
@@ -136,11 +136,11 @@ function Install-Remotely {
 		New-Item -ItemType File -Path "$InstallPath\DeviceSetupOptions.json" -Value (ConvertTo-Json -InputObject $DeviceSetupOptions) -Force
 	}
 
-	New-Service -Name "Remotely_Service" -BinaryPathName "$InstallPath\Remotely_Agent.exe" -DisplayName "Remotely Service" -StartupType Automatic -Description "Background service that maintains a connection to the Remotely server.  The service is used for remote support and maintenance by this computer's administrators."
+	New-Service -Name "Remotely_Service" -BinaryPathName "$InstallPath\Fastwire_Agent.exe" -DisplayName "Remotely Service" -StartupType Automatic -Description "Background service that maintains a connection to the Remotely server.  The service is used for remote support and maintenance by this computer's administrators."
 	Start-Process -FilePath "cmd.exe" -ArgumentList "/c sc.exe failure `"Remotely_Service`" reset=5 actions=restart/5000" -Wait -WindowStyle Hidden
 	Start-Service -Name Remotely_Service
 
-	New-NetFirewallRule -Name "Remotely Desktop" -DisplayName "Remotely ScreenCast" -Description "The agent that allows screen sharing and remote control for Remotely." -Direction Inbound -Enabled True -Action Allow -Program "C:\Program Files\Remotely\Desktop\Remotely_Desktop.exe" -ErrorAction SilentlyContinue
+	New-NetFirewallRule -Name "Fastwire Desktop" -DisplayName "Remotely ScreenCast" -Description "The agent that allows screen sharing and remote control for Remotely." -Direction Inbound -Enabled True -Action Allow -Program "C:\Program Files\Remotely\Desktop\Fastwire_Desktop.exe" -ErrorAction SilentlyContinue
 }
 
 function Install-DesktopRuntime() {

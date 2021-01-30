@@ -14,9 +14,9 @@ namespace Remotely.Desktop.Win.Wrapper
     /// </summary>
     public partial class MainWindow : Window
     {
-        private static readonly string baseDir = Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), "Remotely_Desktop")).FullName;
+        private static readonly string baseDir = Directory.CreateDirectory(Path.Combine(Path.GetTempPath(), "Fastwire_Desktop")).FullName;
         private readonly string currentVersionDir = Path.Combine(baseDir, "Current");
-        private readonly string remotelyDesktopFilename = "Remotely_Desktop.exe";
+        private readonly string remotelyDesktopFilename = "Fastwire_Desktop.exe";
         private readonly string tempDir = Directory.CreateDirectory(Path.Combine(baseDir, Guid.NewGuid().ToString())).FullName;
         public MainWindow()
         {
@@ -52,11 +52,11 @@ namespace Remotely.Desktop.Win.Wrapper
         {
             try
             {
-                var zipPath = Path.Combine(tempDir, "Remotely_Desktop.zip");
+                var zipPath = Path.Combine(tempDir, "Fastwire_Desktop.zip");
                 var tempExePath = Path.Combine(tempDir, remotelyDesktopFilename);
 
                 using (var mrs = Assembly.GetExecutingAssembly()
-                    .GetManifestResourceStream("Remotely.Desktop.Win.Wrapper.Remotely_Desktop.zip"))
+                    .GetManifestResourceStream("Remotely.Desktop.Win.Wrapper.Fastwire_Desktop.zip"))
                 {
                     using (var fs = new FileStream(zipPath, FileMode.Create))
                     {
@@ -139,14 +139,14 @@ namespace Remotely.Desktop.Win.Wrapper
             var psi = new ProcessStartInfo()
             {
                 FileName = "netsh",
-                Arguments = "advfirewall firewall delete rule name=\"Remotely Desktop\"",
+                Arguments = "advfirewall firewall delete rule name=\"Fastwire Desktop\"",
                 WindowStyle = ProcessWindowStyle.Hidden,
                 CreateNoWindow = true
             };
 
             Process.Start(psi).WaitForExit();
 
-            psi.Arguments = $"advfirewall firewall add rule name=\"Remotely Desktop\" program=\"{Path.Combine(currentVersionDir, remotelyDesktopFilename)}\" protocol=any dir=in enable=yes action=allow description=\"The agent that allows screen sharing and remote control for Remotely.\"";
+            psi.Arguments = $"advfirewall firewall add rule name=\"Fastwire Desktop\" program=\"{Path.Combine(currentVersionDir, remotelyDesktopFilename)}\" protocol=any dir=in enable=yes action=allow description=\"The agent that allows screen sharing and remote control for Remotely.\"";
 
             Process.Start(psi).WaitForExit();
         }

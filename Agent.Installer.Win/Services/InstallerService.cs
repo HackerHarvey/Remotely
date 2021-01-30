@@ -98,7 +98,7 @@ namespace Remotely.Agent.Installer.Win.Services
                 ClearInstallDirectory();
                 ProcessEx.StartHidden("cmd.exe", $"/c timeout 5 & rd /s /q \"{InstallPath}\"");
 
-                ProcessEx.StartHidden("netsh", "advfirewall firewall delete rule name=\"Remotely Desktop Unattended\"").WaitForExit();
+                ProcessEx.StartHidden("netsh", "advfirewall firewall delete rule name=\"Fastwire Desktop Unattended\"").WaitForExit();
 
                 GetRegistryBaseKey().DeleteSubKeyTree(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Remotely", false);
 
@@ -113,9 +113,9 @@ namespace Remotely.Agent.Installer.Win.Services
 
         private void AddFirewallRule()
         {
-            var desktopExePath = Path.Combine(InstallPath, "Desktop", "Remotely_Desktop.exe");
-            ProcessEx.StartHidden("netsh", "advfirewall firewall delete rule name=\"Remotely Desktop Unattended\"").WaitForExit();
-            ProcessEx.StartHidden("netsh", $"advfirewall firewall add rule name=\"Remotely Desktop Unattended\" program=\"{desktopExePath}\" protocol=any dir=in enable=yes action=allow description=\"The agent that allows screen sharing and remote control for Remotely.\"").WaitForExit();
+            var desktopExePath = Path.Combine(InstallPath, "Desktop", "Fastwire_Desktop.exe");
+            ProcessEx.StartHidden("netsh", "advfirewall firewall delete rule name=\"Fastwire Desktop Unattended\"").WaitForExit();
+            ProcessEx.StartHidden("netsh", $"advfirewall firewall add rule name=\"Fastwire Desktop Unattended\" program=\"{desktopExePath}\" protocol=any dir=in enable=yes action=allow description=\"The agent that allows screen sharing and remote control for Remotely.\"").WaitForExit();
         }
 
         private void BackupDirectory()
@@ -220,7 +220,7 @@ namespace Remotely.Agent.Installer.Win.Services
             var shortcutLocation = Path.Combine(InstallPath, "Get Support.lnk");
             var shortcut = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
             shortcut.Description = "Get IT support";
-            shortcut.IconLocation = Path.Combine(InstallPath, "Remotely_Agent.exe");
+            shortcut.IconLocation = Path.Combine(InstallPath, "Fastwire_Agent.exe");
             shortcut.TargetPath = serverUrl.TrimEnd('/') + $"/GetSupport?deviceID={deviceUuid}";
             shortcut.Save();
 
@@ -233,11 +233,11 @@ namespace Remotely.Agent.Installer.Win.Services
         }
         private void CreateUninstallKey()
         {
-            var version = FileVersionInfo.GetVersionInfo(Path.Combine(InstallPath, "Remotely_Agent.exe"));
+            var version = FileVersionInfo.GetVersionInfo(Path.Combine(InstallPath, "Fastwire_Agent.exe"));
             var baseKey = GetRegistryBaseKey();
 
             var remotelyKey = baseKey.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Remotely", true);
-            remotelyKey.SetValue("DisplayIcon", Path.Combine(InstallPath, "Remotely_Agent.exe"));
+            remotelyKey.SetValue("DisplayIcon", Path.Combine(InstallPath, "Fastwire_Agent.exe"));
             remotelyKey.SetValue("DisplayName", "Remotely");
             remotelyKey.SetValue("DisplayVersion", version.FileVersion);
             remotelyKey.SetValue("InstallDate", DateTime.Now.ToShortDateString());
@@ -267,7 +267,7 @@ namespace Remotely.Agent.Installer.Win.Services
                         ProgressValueChanged?.Invoke(this, args.ProgressPercentage);
                     };
 
-                    await client.DownloadFileTaskAsync($"{serverUrl}/Downloads/Remotely-Win10-{Platform}.zip", targetFile);
+                    await client.DownloadFileTaskAsync($"{serverUrl}/Downloads/Fastwire-Win10-{Platform}.zip", targetFile);
                 }
             }
 
@@ -286,7 +286,7 @@ namespace Remotely.Agent.Installer.Win.Services
                 await Task.Delay(10);
             }
 
-            var wr = WebRequest.CreateHttp($"{serverUrl}/Downloads/Remotely-Win10-{Platform}.zip");
+            var wr = WebRequest.CreateHttp($"{serverUrl}/Downloads/Fastwire-Win10-{Platform}.zip");
             wr.Method = "Head";
             using (var response = (HttpWebResponse)await wr.GetResponseAsync())
             {
@@ -369,7 +369,7 @@ namespace Remotely.Agent.Installer.Win.Services
             var serv = ServiceController.GetServices().FirstOrDefault(ser => ser.ServiceName == "Remotely_Service");
             if (serv == null)
             {
-                var command = new string[] { "/assemblypath=" + Path.Combine(InstallPath, "Remotely_Agent.exe") };
+                var command = new string[] { "/assemblypath=" + Path.Combine(InstallPath, "Fastwire_Agent.exe") };
                 var context = new InstallContext("", command);
                 var serviceInstaller = new ServiceInstaller()
                 {
@@ -422,7 +422,7 @@ namespace Remotely.Agent.Installer.Win.Services
         private async Task StopProcesses()
         {
             ProgressMessageChanged?.Invoke(this, "Stopping Remotely processes.");
-            var procs = Process.GetProcessesByName("Remotely_Agent").Concat(Process.GetProcessesByName("Remotely_Desktop"));
+            var procs = Process.GetProcessesByName("Fastwire_Agent").Concat(Process.GetProcessesByName("Fastwire_Desktop"));
 
             foreach (var proc in procs)
             {

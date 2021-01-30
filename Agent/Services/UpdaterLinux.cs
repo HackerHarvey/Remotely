@@ -60,7 +60,7 @@ namespace Remotely.Agent.Services
                 var connectionInfo = ConfigService.GetConnectionInfo();
                 var serverUrl = ConfigService.GetConnectionInfo().Host;
 
-                var fileUrl = serverUrl + $"/Downloads/Remotely-Linux.zip";
+                var fileUrl = serverUrl + $"/Downloads/Fastwire-Linux.zip";
 
                 var lastEtag = string.Empty;
 
